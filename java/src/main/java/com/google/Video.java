@@ -31,7 +31,7 @@ class Video {
     return tags;
   }
 
-  String getVideo(){
+  String getVideo(){  //returns video details as string
     return title + " (" + videoId + ") " + tags.toString().replaceAll(",", "");
   }
 }

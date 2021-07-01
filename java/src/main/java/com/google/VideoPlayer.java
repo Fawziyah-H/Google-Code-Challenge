@@ -5,8 +5,8 @@ import java.util.*;
 public class VideoPlayer {
 
   private final VideoLibrary videoLibrary;
-  private boolean isPlaying;
-  private String currentVideo = null;
+  private boolean isPlaying;                   //keep track of if a video is currently playing
+  private String currentVideo = null;          //keep track of which video is currently playing if any
   private final HashMap<String, String> flaggedVideos = new HashMap<>();
   private final ArrayList<VideoPlaylist> playLists = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public class VideoPlayer {
       System.out.println("Cannot play video: Video does not exist");
       return;
     }
-    if (isPlaying || currentVideo != null){
+    if (isPlaying || currentVideo != null){      //stop any currently playing videos
       System.out.println("Stopping video: " + currentVideo);
     }
     if (flaggedVideos.containsKey(videoId)){
@@ -118,7 +118,7 @@ public class VideoPlayer {
     List<Video> allVideos = videoLibrary.getVideos();
     for (Video v: allVideos){
       if (v.getTitle().equals(currentVideo)){
-        vid = v.getVideo();
+        vid = v.getVideo();       //get details of currently playing video
       }
     }
     if (currentVideo != null){
@@ -317,7 +317,7 @@ public class VideoPlayer {
     Scanner sc = new Scanner(System.in);
     if (sc.hasNextInt()){
       int number = sc.nextInt();
-      if (number > results.size() || number < 1){
+      if (number > results.size() || number < 1){  //check for valid number from user
         return;
       }
       System.out.println("Playing video: " + results.get(number-1));
